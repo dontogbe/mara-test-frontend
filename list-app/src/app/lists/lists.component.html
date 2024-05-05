@@ -1,13 +1,14 @@
-
-<div *ngFor="let list of lists" class="col s12 m8">
-    <div class="card">
-        <div class="card-content">
-            <span class="card-title">{{list.name}}</span>
-            <p>{{list.description}}</p>
-        </div>
-        <div class="card-action">
-            <a href="#"></a>
-            <a href="#"></a>
+<div class="row" style="gap:10px"> 
+    <div *ngFor="let list of lists" class="col s6 m3">
+        <div class="card small">
+            <div class="card-content">
+                <span class="card-title green-text">{{list.name}}</span>
+                <p>{{list.description}}</p>
+            </div>
+            <div class="card-action">
+                <a href="#"></a>
+                <a href="#"></a>
+            </div>
         </div>
     </div>
 </div>
