@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { List } from '../list';
+import { Item} from '../list';
 import { NgFor } from '@angular/common';
 import { ListerService } from '../lister.service';
+
 
 @Component({
   selector: 'app-lists',
@@ -11,11 +12,20 @@ import { ListerService } from '../lister.service';
   styleUrl: './lists.component.css'
 })
 export class ListsComponent {
-  lists:List[]=[];
+  list:Item[]=[];
   constructor(private lister:ListerService){
   }
   getLists(): void {
-    this.lists=this.lister.getList();
+    this.lister.getList().subscribe(
+      list => this.list = list
+    );
+  }
+  add(name: string):void{
+    name=name.trim();
+    if (!name){return;}
+    let item:Item={name:name,description:'',id:0};
+    this.lister.addItem(item)
+    .subscribe(item =>{this.list.push(item)})
   }
   ngOnInit():void{
     this.getLists();
